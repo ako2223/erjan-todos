@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div>
-      <TodoList />;
+      <TodoList/>
     </div>
   );
 }

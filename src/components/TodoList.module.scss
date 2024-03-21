@@ -1,0 +1,71 @@
+
+li {
+    list-style: none;
+}
+
+.all   {
+    display: flex;
+    flex-direction: row;
+}
+
+.todos {
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    gap: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+.title_input{
+   
+    height: 150px;
+    text-align: left;
+ 
+}
+.task {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid greenyellow;
+    border-radius: 10px;
+    max-width: 200px;
+    padding: 10px;
+    margin: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+    text-wrap: wrap;
+}
+
+.outputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.textarea {
+    height: 150px;
+}
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    
+    gap: 10px}
+
+.title {
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.text {
+    font-weight: 300;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 70%;
+}
