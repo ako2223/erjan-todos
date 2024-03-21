@@ -8,11 +8,13 @@ function TodoList() {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(()=> {
-
+    axios.get("http://localhost:8000/todos").then(response => 
+    {setTodos(response.data)});
   },[])
 
   const addTodo = () => {
-    axios.post("http://localhost:8000/todos", { text: inputValue });
+    axios.post("http://localhost:8000/todos", { text: inputValue })
+    .then(resonse => setTodos([...todos, response.data]));
   };
 
   return (
@@ -32,6 +34,11 @@ function TodoList() {
           <button>Delete</button>
         </li>
       </ul>
+      {todos.map(todo) => (
+      <li key={todo.id}></li>
+      <span>{todo.text}</span>
+      <button>button</button>
+      )}
     </div>
   );
 }
