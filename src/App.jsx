@@ -9,6 +9,7 @@ import { Route } from "react-router";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import { NavLink } from "react-router-dom";
+import Favorites from "./components/Favorites";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -32,6 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/todos" element={<TodoList />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </div>
   );

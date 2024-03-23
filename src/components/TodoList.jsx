@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 import style from "./TodoList.module.scss";
+import { NavLink } from "react-router-dom";
 
 function TodoList() {
   //     value   function    hook  default
@@ -10,8 +11,8 @@ function TodoList() {
   const [inputValue, setInputValue] = useState("");
   const [inputTitle, setInputTitle] = useState("");
   const [editMode, setEditMode] = useState(null);
-  // const URL = "http://localhost:8000/todos/"
-  const URL = "https://f65bb163746fd6f6.mokky.dev/todos/";
+  const URL = "http://localhost:8000/todos/";
+  // const URL = "https://f65bb163746fd6f6.mokky.dev/todos/";
 
   useEffect(() => {
     axios.get(URL).then((response) => {
@@ -53,6 +54,30 @@ function TodoList() {
       });
   };
 
+  const addFav = (id, fav) => {
+    axios
+      .patch(`${URL}${id}`, {
+        fav: true,
+      })
+      .then(() => {
+        setTodos(
+          todos.map((todo) => (todo.id === id ? { ...todo, fav: true } : todo))
+        );
+      });
+  };
+
+  const remFav = (id, fav) => {
+    axios
+      .patch(`${URL}${id}`, {
+        fav: false,
+      })
+      .then(() => {
+        setTodos(
+          todos.map((todo) => (todo.id === id ? { ...todo, fav: false } : todo))
+        );
+      });
+  };
+
   const editTitle = (id, newTitle) => {
     axios
       .patch(`${URL}${id}`, {
@@ -88,6 +113,9 @@ function TodoList() {
           ></textarea>
 
           <button onClick={addTodo}>Submit</button>
+          <NavLink to="/favorites">
+            <button>Go to favorites</button>
+          </NavLink>
         </div>
       </div>
       <div className={style.todos}>
@@ -121,6 +149,25 @@ function TodoList() {
                   <div className={style.buttons}>
                     <button onClick={() => deleteTodo(todo.id)}>Delete</button>
                     <button onClick={() => setEditMode(todo.id)}>Edit</button>
+                    <li key={todo.id}>
+                      {todo.fav === false ? (
+                        <>
+                          <button
+                            
+                            onClick={() => addFav(todo.id)}
+                          >
+                            Add to favorites
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button onClick={() => remFav(todo.id)}>
+                            Remove from to favorites
+                          </button>
+                        </>
+                      )}
+                    </li>
+                    }
                   </div>
                 </div>
               </>
