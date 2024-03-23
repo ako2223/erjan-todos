@@ -11,7 +11,7 @@ function TodoList() {
   const [inputTitle, setInputTitle] = useState("");
   const [editMode, setEditMode] = useState(null);
   // const URL = "http://localhost:8000/todos/"
-  const URL ="https://f65bb163746fd6f6.mokky.dev/todos/"
+  const URL = "https://f65bb163746fd6f6.mokky.dev/todos/";
 
   useEffect(() => {
     axios.get(URL).then((response) => {
@@ -84,8 +84,8 @@ function TodoList() {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Details">
-            </textarea>
+            placeholder="Details"
+          ></textarea>
 
           <button onClick={addTodo}>Submit</button>
         </div>
@@ -102,10 +102,11 @@ function TodoList() {
                     onBlur={(e) => editTitle(todo.id, e.target.value)}
                   />
                   <textarea
-                    className={style.textarea} type="text" defaultValue=
-                    {todo.text}
-                    onBlur={(e) => editTodo(todo.id, e.target.value)}>
-                  </textarea>
+                    className={style.textarea}
+                    type="text"
+                    defaultValue={todo.text}
+                    onBlur={(e) => editTodo(todo.id, e.target.value)}
+                  ></textarea>
                 </div>
 
                 <button onClick={() => setEditMode(null)}>No edit</button>

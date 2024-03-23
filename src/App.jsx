@@ -3,6 +3,12 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import PostList from "./components/PostList/PostList";
 import TodoList from "./components/TodoList";
+import TextField from "./components/TextField";
+import { Routes } from "react-router";
+import { Route } from "react-router";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import { NavLink } from "react-router-dom";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -21,7 +27,12 @@ function App() {
 
   return (
     <div>
-      <TodoList/>
+      
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/todos" element={<TodoList />} />
+      </Routes>
     </div>
   );
 }
